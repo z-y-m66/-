@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>福建风景介绍</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "微软雅黑", Arial, sans-serif;
+      background: #f7faff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #0076a3;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 40px #c3e0ef66;
+      padding: 40px 28px;
+    }
+    h2 {
+      border-left: 6px solid #8bcfff;
+      padding-left: 10px;
+      color: #0076a3;
+      margin-top: 40px;
+    }
+    .landscape-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+    }
+    .card {
+      background: #f1f7fb;
+      border-radius: 12px;
+      box-shadow: 0 1px 6px #a0bfd966;
+      width: 250px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow .2s;
+    }
+    .card:hover {
+      box-shadow: 0 4px 24px #0076a377;
+    }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 15px;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      color: #96a5b4;
+      padding: 18px 0 8px 0;
+      font-size: 15px;
+      margin-top: 35px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>福建风景介绍</h1>
+    <p>八闽大地，美景如画</p>
+  </header>
+  <div class="container">
+    <h2>热门景点</h2>
+    <div class="landscape-list">
+      <div class="card">
+        <img src="https://img2.baidu.com/it/u=2435633146,2116660749&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=341" alt="武夷山">
+        <div class="card-content">
+          <h3>武夷山</h3>
+          <p>世界自然与文化双遗产，以丹霞地貌和碧水丹山著称，是福建省最著名的旅游胜地。</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://img2.baidu.com/it/u=372687815,3029647275&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=333" alt="鼓浪屿">
+        <div class="card-content">
+          <h3>鼓浪屿</h3>
+          <p>厦门著名海岛，素有“海上花园”之美称，历史建筑众多、风光迷人。</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://img2.baidu.com/it/u=1998140217,2506717653&fm=253&fmt=auto&app=120&f=JPEG?w=600&h=400" alt="土楼">
+        <div class="card-content">
+          <h3>福建土楼</h3>
+          <p>独特的民居建筑，是世界文化遗产代表，彰显闽南客家人的智慧与生活方式。</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://img2.baidu.com/it/u=3670812245,3673926056&fm=253&fmt=auto&app=120&f=JPEG?w=600&h=400" alt="泰宁大金湖">
+        <div class="card-content">
+          <h3>泰宁大金湖</h3>
+          <p>以丹霞地貌和湖岛景观闻名，湖光山色相映成趣，生态环境优美。</p>
+        </div>
+      </div>
+    </div>
+    <h2>福建简介</h2>
+    <p>
+      福建，简称“闽”，是中国东南沿海的重要省份。这里不仅拥有丰富的自然风光资源，还有独特的民俗文化和悠久的历史。以山川秀美、气候宜人著称，福建是旅游、度假的理想选择。
+    </p>
+  </div>
+  <footer>
+    © 2026 福建风景介绍网页  |  设计者：z-y-m66
+  </footer>
+</body>
+</html>

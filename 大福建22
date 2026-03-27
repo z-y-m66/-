@@ -1,0 +1,139 @@
+     1	import { useEffect, useRef, useState } from 'react';
+     2	import { BookOpen, Music, Palmtree, Building2 } from 'lucide-react';
+     3	
+     4	interface CultureItem {
+     5	  id: number;
+     6	  icon: React.ReactNode;
+     7	  title: string;
+     8	  description: string;
+     9	}
+    10	
+    11	const cultures: CultureItem[] = [
+    12	  {
+    13	    id: 1,
+    14	    icon: <BookOpen className="w-8 h-8" />,
+    15	    title: '闽南文化',
+    16	    description: '闽南文化是福建最具代表性的地域文化之一，包括闽南语、南音、歌仔戏、高甲戏等丰富的非物质文化遗产，以及独特的民俗风情。',
+    17	  },
+    18	  {
+    19	    id: 2,
+    20	    icon: <Music className="w-8 h-8" />,
+    21	    title: '南音',
+    22	    description: '南音是中国现存最古老的乐种之一，被誉为"中国音乐史上的活化石"，2009年被列入联合国教科文组织人类非物质文化遗产代表作名录。',
+    23	  },
+    24	  {
+    25	    id: 3,
+    26	    icon: <Palmtree className="w-8 h-8" />,
+    27	    title: '客家文化',
+    28	    description: '福建是客家人的重要聚居地，客家土楼、客家山歌、客家美食等构成了独特的客家文化景观，体现了客家人勤劳智慧的精神。',
+    29	  },
+    30	  {
+    31	    id: 4,
+    32	    icon: <Building2 className="w-8 h-8" />,
+    33	    title: '海上丝绸之路',
+    34	    description: '福建是海上丝绸之路的重要起点，泉州港曾是东方第一大港，留下了丰富的海丝文化遗产，见证了中外文化交流的辉煌历史。',
+    35	  },
+    36	];
+    37	
+    38	const Culture = () => {
+    39	  const sectionRef = useRef<HTMLDivElement>(null);
+    40	  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+    41	
+    42	  useEffect(() => {
+    43	    const observer = new IntersectionObserver(
+    44	      (entries) => {
+    45	        entries.forEach((entry) => {
+    46	          const id = Number(entry.target.getAttribute('data-id'));
+    47	          if (entry.isIntersecting) {
+    48	            setVisibleCards((prev) => new Set([...prev, id]));
+    49	          }
+    50	        });
+    51	      },
+    52	      { threshold: 0.2 }
+    53	    );
+    54	
+    55	    const cards = sectionRef.current?.querySelectorAll('.culture-card');
+    56	    cards?.forEach((card) => observer.observe(card));
+    57	
+    58	    return () => observer.disconnect();
+    59	  }, []);
+    60	
+    61	  return (
+    62	    <section
+    63	      id="culture"
+    64	      ref={sectionRef}
+    65	      className="py-20 md:py-32 bg-gradient-to-b from-teal-50/30 to-white"
+    66	    >
+    67	      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    68	        {/* Section Header */}
+    69	        <div className="text-center mb-16">
+    70	          <span className="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium mb-4">
+    71	            文化传承
+    72	          </span>
+    73	          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+    74	            感受<span className="text-gradient">福建文化</span>
+    75	          </h2>
+    76	          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+    77	            千年历史积淀，多元文化交融，福建拥有丰富的文化遗产
+    78	          </p>
+    79	        </div>
+    80	
+    81	        {/* Culture Grid */}
+    82	        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    83	          {cultures.map((culture, index) => (
+    84	            <div
+    85	              key={culture.id}
+    86	              data-id={culture.id}
+    87	              className={`culture-card group p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-teal-200 ${
+    88	                visibleCards.has(culture.id)
+    89	                  ? 'opacity-100 translate-y-0'
+    90	                  : 'opacity-0 translate-y-8'
+    91	              }`}
+    92	              style={{ transitionDelay: `${index * 100}ms` }}
+    93	            >
+    94	              <div className="flex items-start gap-6">
+    95	                {/* Icon */}
+    96	                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+    97	                  {culture.icon}
+    98	                </div>
+    99	
+   100	                {/* Content */}
+   101	                <div className="flex-1">
+   102	                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-700 transition-colors">
+   103	                    {culture.title}
+   104	                  </h3>
+   105	                  <p className="text-gray-600 leading-relaxed">
+   106	                    {culture.description}
+   107	                  </p>
+   108	                </div>
+   109	              </div>
+   110	            </div>
+   111	          ))}
+   112	        </div>
+   113	
+   114	        {/* Stats */}
+   115	        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+   116	          {[
+   117	            { number: '4', label: '世界遗产' },
+   118	            { number: '8', label: '国家级非遗' },
+   119	            { number: '100+', label: '4A级以上景区' },
+   120	            { number: '3000+', label: '历史文化名村' },
+   121	          ].map((stat, index) => (
+   122	            <div
+   123	              key={index}
+   124	              className="text-center p-6 bg-white rounded-xl shadow-md"
+   125	            >
+   126	              <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">
+   127	                {stat.number}
+   128	              </div>
+   129	              <div className="text-gray-600 text-sm">{stat.label}</div>
+   130	            </div>
+   131	          ))}
+   132	        </div>
+   133	      </div>
+   134	    </section>
+   135	  );
+   136	};
+   137	
+   138	export default Culture;
+   139	
